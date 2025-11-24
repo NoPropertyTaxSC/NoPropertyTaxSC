@@ -6,29 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { margin:0; background:#f5d742; color:#000; font-family:Georgia, serif; text-align:center; line-height:1.6; }
-    header { padding:40px 20px; background:#000; color:#f5d742; }
-    h1 { font-size:4.5em; margin:0; letter-spacing:8px; text-transform:uppercase; font-weight:bold; }
-    .flag { max-width:90%; margin:40px auto; display:block; }
-    .content { max-width:900px; margin:0 auto 60px; padding:20px; }
-    .petition-text { background:white; padding:40px; border:8px solid #000; margin:40px auto; text-align:left; font-size:0.9em; max-height:600px; overflow-y:auto; }
-    .petition-text h2 { text-align:center; font-size:2em; margin-top:0; }
-    .form-box { margin:60px auto; max-width:900px; border:8px solid #000; background:white; overflow:hidden; }
-    iframe { width:100%; height:1200px; border:none; }
-    .counter { font-size:4.5em; font-weight:bold; margin:60px; padding:30px; border:8px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
-    .donate-section { margin:60px auto; }
-    .donate-btn { display:inline-block; padding:18px 60px; font-size:2em; font-weight:bold; color:white; background:red; text-decoration:none; border:5px solid #000; text-transform:uppercase; }
+    header { padding:30px 15px; background:#000; color:#f5d742; }
+    h1 { font-size:2.8em; margin:0; letter-spacing:6px; text-transform:uppercase; font-weight:bold; }
+    .flag { max-width:90%; margin:30px auto; display:block; }
+    .content { max-width:900px; margin:0 auto 40px; padding:15px; }
+    .petition-text { background:white; padding:25px; border:6px solid #000; margin:30px auto; text-align:left; font-size:1em; max-height:500px; overflow-y:auto; }
+    .petition-text h2 { font-size:1.8em; text-align:center; }
+    .form-box { margin:40px auto; max-width:100%; border:6px solid #000; background:white; overflow:hidden; }
+    iframe { width:100%; height:1100px; border:none; }
+    .counter { font-size:3.2em; margin:40px 10px; padding:20px; border:6px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
+    .donate-section, .social-buttons { margin:50px auto; }
+    .donate-btn, .social-buttons a, .share-btn {
+      display:block; width:90%; max-width:400px; margin:15px auto; padding:18px;
+      font-size:1.8em; font-weight:bold; text-decoration:none; border:5px solid #000;
+      text-transform:uppercase; box-sizing:border-box;
+    }
+    .donate-btn { background:red; color:white; }
     .donate-btn:hover { background:#f5d742; color:#000; }
-    .social-buttons a, .share-btn { display:inline-block; margin:20px; padding:18px 60px; font-size:2em; font-weight:bold; color:#f5d742; background:#000; text-decoration:none; border:5px solid #000; text-transform:uppercase; }
+    .social-buttons a, .share-btn { background:#000; color:#f5d742; }
     .social-buttons a:hover, .share-btn:hover { background:#f5d742; color:#000; }
-    .reps-section { background:white; padding:40px; border:8px solid #000; margin:60px auto; max-width:900px; }
-    .reps-section h2 { text-align:center; font-size:2em; }
-    .zip-lookup input { padding:12px; font-size:1.3em; width:220px; border:3px solid #000; }
-    .find-btn { padding:12px 30px; font-size:1.3em; background:#000; color:#f5d742; border:3px solid #000; cursor:pointer; }
-    .find-btn:hover { background:#f5d742; color:#000; }
-    .email-template { background:#f9f9f9; padding:25px; margin:30px 0; border-left:6px solid #000; font-size:1.2em; }
-    footer { background:#000; color:#f5d742; padding:40px; }
-    .back-to-top { position:fixed; bottom:20px; right:20px; padding:12px 24px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1.1em; }
+    .reps-section { background:white; padding:30px; border:6px solid #000; margin:50px auto; max-width:900px; font-size:1em; }
+    .reps-section h2 { font-size:1.8em; }
+    .zip-lookup { margin:20px 0; }
+    .zip-lookup input { width:70%; padding:12px; font-size:1.2em; border:3px solid #000; }
+    .find-btn { width:80%; padding:14px; font-size:1.4em; margin-top:10px; }
+    .email-template { font-size:1.1em; padding:20px; }
+    footer { padding:30px; font-size:0.9em; }
+    .back-to-top {
+      position:fixed; bottom:15px; right:15px; padding:12px 18px; background:#000; color:#f5d742;
+      text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1em; border-radius:8px; z-index:100;
+    }
     .back-to-top:hover { background:#f5d742; color:#000; }
+
+    /* Desktop adjustments */
+    @media (min-width: 768px) {
+      h1 { font-size:4.5em; }
+      .donate-btn, .social-buttons a, .share-btn { display:inline-block; width:auto; margin:20px; }
+      .zip-lookup input { width:220px; }
+      .find-btn { width:auto; margin-left:10px; }
+      .counter { font-size:4.5em; }
+    }
   </style>
 </head>
 <body>
@@ -42,7 +59,7 @@
 
     <!-- Scrollable Petition Text -->
     <div class="petition-text">
-      <h2>South Carolina Petition to Abolish All Property Taxes and Replace Them with a Fair, Broad-Based Revenue System</h2>
+      <h2>South Carolina Petition to Abolish All Property Taxes</h2>
       <p><strong>Title:</strong><br>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
       <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
       <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
@@ -67,7 +84,7 @@
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
 
-    <!-- Bigger Form -->
+    <!-- Bigger Responsive Form -->
     <div class="form-box">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
@@ -75,35 +92,32 @@
     <!-- Live Signature Counter -->
     <div class="counter" id="liveCount">Loading signatures…</div>
 
-    <!-- Social + Share + Donate (all together) -->
+    <!-- Share + Social + Donate -->
     <div class="social-buttons">
       <a href="https://x.com/intent/tweet?text=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC&url=https://nopropertytaxsc.com" target="_blank" class="share-btn">Share on X</a>
-      <a href="https://www.instagram.com/?caption=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC" target="_blank" class="share-btn">Share on Instagram</a>
+      <a href="https://www.instagram.com/" target="_blank" class="share-btn">Share on Instagram</a>
       <a href="https://x.com/nopropertytaxsc" target="_blank">Follow on X</a>
       <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
     </div>
 
     <div class="donate-section">
-      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">If you would like to support the movement, donate below</p>
+      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">Support the movement — donate below</p>
       <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
     </div>
 
-    <!-- Reps Section – now below donate/social -->
+    <!-- Contact Reps Section -->
     <div class="reps-section">
       <h2>Contact Your State Representatives</h2>
-      <p>Find your House and Senate reps by ZIP code. Tell them: “I am not a slave to the state, I deserve full ownership, not a rental from the government - vote to abolish Property Tax in 2026”</p>
+      <p>Tell them: “I am not a slave to the state — vote to abolish Property Tax in 2026”</p>
       <div class="zip-lookup">
-        <input type="text" id="zipInput" placeholder="Enter ZIP Code (e.g. 29201)" class="zip-input">
+        <input type="text" id="zipInput" placeholder="Enter ZIP Code">
         <button onclick="findReps()" class="find-btn">Find My Reps</button>
       </div>
       <div id="repsResult"></div>
       <div class="email-template">
-        <h3>Pre-Written Email Template (just copy & paste)</h3>
-        <p><strong>Subject:</strong> Abolish Property Taxes in SC – Vote YES in 2026</p>
-        <p>Dear [Representative/Senator Name],</p>
-        <p>As your constituent in [Your City/Zip], I demand you support the complete abolition of property taxes in South Carolina. This regressive tax destroys families and businesses. I signed the official petition at NoPropertyTaxSC.com and expect you to vote YES on the 2026 constitutional amendment to end property taxes forever.</p>
-        <p><strong>I am not a slave to the state. I deserve full ownership, not a rental from the government.</strong></p>
-        <p>Sincerely,<br>[Your Full Name]<br>[Your City/Zip]</p>
+        <h3>Pre-Written Email</h3>
+        <p><strong>Subject:</strong> Abolish Property Taxes – Vote YES in 2026</p>
+        <p>Dear [Rep Name],<br>I demand you vote to end property taxes forever. I signed at NoPropertyTaxSC.com.<br><strong>I am not a slave to the state. I deserve full ownership.</strong><br>Sincerely, [Your Name]</p>
       </div>
     </div>
 
@@ -115,10 +129,9 @@
        Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
 
-  <!-- Back to Top Button -->
   <a href="#" class="back-to-top">Back to Top</a>
 
-  <!-- Live Signature Counter Script -->
+  <!-- Live Counter + Reps Script -->
   <script>
     function updateSignatureCount() {
       fetch('https://script.google.com/macros/s/AKfycbwtoIcPrG0dlSZ_V0Iiye-1EEuXJ2Kk2W8lNCbaeGs3Bm_YINN2zd5_rFTTXHnA9taY/exec')
@@ -131,19 +144,16 @@
         });
     }
     updateSignatureCount();
-    setInterval(updateSignatureCount, 10000); // updates every 10 seconds
-  </script>
+    setInterval(updateSignatureCount, 10000);
 
-  <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
       if (!zip || zip.length !== 5 || isNaN(zip)) {
-        document.getElementById('repsResult').innerHTML = '<p style="color:red;">Please enter a valid 5-digit ZIP code.</p>';
+        document.getElementById('repsResult').innerHTML = '<p style="color:red;">Enter a valid 5-digit ZIP</p>';
         return;
       }
-      const url = `https://www.scstatehouse.gov/legislatorssearch.php?zip=${zip}`;
-      window.open(url, '_blank');
-      document.getElementById('repsResult').innerHTML = '<p>Opening official lookup in new tab...<br>Your reps\' names, phone numbers, and emails will appear there. Use the template above!</p>';
+      window.open(`https://www.scstatehouse.gov/legislatorssearch.php?zip=${zip}`, '_blank');
+      document.getElementById('repsResult').innerHTML = '<p>Opening official lookup…</p>';
     }
   </script>
 
