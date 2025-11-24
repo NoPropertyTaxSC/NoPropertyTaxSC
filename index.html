@@ -121,7 +121,7 @@
   <!-- Live Counter + Reps Script -->
   <script>
     function updateSignatureCount() {
-      fetch('https://script.google.com/macros/s/AKfycbwtoIcPrG0dlSZ_V0Iiye-1EEuXJ2Kk2W8lNCbaeGs3Bm_YINN2zd5_rFTTXHnA9taY/exec')
+      fetch('https://script.google.com/macros/s/AKfycbxypRAoCUcH-b7A9edOF77X3lkG5pPpzfnmpcwK7yXszm641lSup_vOeFYNAjtznLpD/exec')
         .then(r => r.json())
         .then(data => {
           document.getElementById('liveCount').innerHTML = `${data.count.toLocaleString()}<br>have signed the petition`;
