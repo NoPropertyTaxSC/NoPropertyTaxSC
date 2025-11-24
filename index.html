@@ -27,6 +27,7 @@
     .social-buttons a:hover, .share-btn:hover { background:#f5d742; color:#000; }
     .reps-section { background:white; padding:30px; border:6px solid #000; margin:50px auto; max-width:900px; font-size:1em; }
     .reps-section h2 { font-size:1.8em; }
+    .zip-lookup { margin:20px 0; }
     .zip-lookup input { width:70%; padding:12px; font-size:1.2em; border:3px solid #000; }
     .find-btn { width:80%; padding:14px; font-size:1.4em; margin-top:10px; }
     .email-template { font-size:1.1em; padding:20px; }
@@ -42,11 +43,14 @@
   </style>
 </head>
 <body>
-  <header><h1>No Property Tax SC</h1></header>
+  <header>
+    <h1>No Property Tax SC</h1>
+  </header>
   <main class="content">
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
+    <!-- Scrollable Petition Text -->
     <div class="petition-text">
-      <h2>South Carolina Petition to Abolish All Property Taxes</h2>
+      <h2>South Carolina Petition to Abolish All Property Taxes and Replace Them with a Fair, Broad-Based Revenue System</h2>
       <p><strong>Title:</strong><br>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
       <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
       <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
@@ -70,17 +74,13 @@
       <p><strong>Let South Carolina lead the nation once again.<br>Abolish property taxes now.<br>Make South Carolina the True Property Tax-Free State.</strong></p>
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
-
-    <!-- Form with invisible counter button over Submit -->
+    <!-- Bigger Responsive Form -->
     <div class="form-box">
-      <button class="hidden-counter-btn" onclick="bumpCounter()"></button>
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
-
-    <!-- Live Counter -->
-    <div class="counter" id="liveCount">0<br>have signed the petition</div>
-
-    <!-- Social + Donate -->
+    <!-- Live Signature Counter -->
+    <div class="counter" id="liveCount">100+<br>have signed the petition</div>
+    <!-- Share + Social + Donate -->
     <div class="social-buttons">
       <a href="https://x.com/intent/tweet?text=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC&url=https://nopropertytaxsc.com" target="_blank" class="share-btn">Share on X</a>
       <a href="https://www.instagram.com/" target="_blank" class="share-btn">Share on Instagram</a>
@@ -88,11 +88,10 @@
       <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
     </div>
     <div class="donate-section">
-      <p style="font-size:1.8em;font-weight:bold;margin-bottom:20px;">Support the movement — donate below</p>
+      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">Support the movement — donate below</p>
       <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
     </div>
-
-    <!-- Reps Section -->
+    <!-- Contact Reps Section -->
     <div class="reps-section">
       <h2>Contact Your State Representatives</h2>
       <p>Tell them: “I am not a slave to the state — vote to abolish Property Tax in 2026”</p>
@@ -108,30 +107,20 @@
       </div>
     </div>
   </main>
-
   <footer>
-    <p><strong>No Property Tax South Carolina</strong><br>A grassroots movement to abolish property tax in SC<br>Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
+    <p><strong>No Property Tax South Carolina</strong><br>
+       A grassroots movement to abolish property tax in SC<br>
+       Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
-
   <a href="#" class="back-to-top">Back to Top</a>
-
-  <!-- 100% WORKING COUNTER (click Submit = +1) -->
-  <script>
-    function bumpCounter() {
-      let count = parseInt(localStorage.getItem('noptc_signatures') || '0');
-      count++;
-      localStorage.setItem('noptc_signatures', count);
-      document.getElementById('liveCount').innerHTML = `${count.toLocaleString()}<br>have signed the petition`;
-    }
-    // Load on open
-    let count = parseInt(localStorage.getItem('noptc_signatures') || '0');
-    document.getElementById('liveCount').innerHTML = `${count.toLocaleString()}<br>have signed the petition`;
-  </script>
-
+  <!-- Reps Script -->
   <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
-      if (!zip || zip.length !== 5 || isNaN(zip)) return document.getElementById('repsResult').innerHTML = '<p style="color:red;">Valid ZIP required</p>';
+      if (!zip || zip.length !== 5 || isNaN(zip)) {
+        document.getElementById('repsResult').innerHTML = '<p style="color:red;">Enter a valid 5-digit ZIP</p>';
+        return;
+      }
       window.open(`https://www.scstatehouse.gov/legislatorssearch.php?zip=${zip}`, '_blank');
       document.getElementById('repsResult').innerHTML = '<p>Opening official lookup…</p>';
     }
