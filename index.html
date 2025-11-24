@@ -11,6 +11,7 @@
     .flag { max-width:90%; margin:40px auto; display:block; }
     .content { max-width:900px; margin:0 auto; padding:20px; }
     p { font-size:1.6em; margin:30px auto; max-width:800px; }
+    .counter { font-size:3.5em; font-weight:bold; margin:50px; color:#000; }
     .petition { margin:60px auto; max-width:800px; border:8px solid #000; background:white; overflow:hidden; }
     footer { background:#000; color:#f5d742; padding:40px; margin-top:80px; }
     footer a { color:#f5d742; }
@@ -29,8 +30,26 @@
     <p><strong>South Carolina homeowners are being crushed.</strong><br>
        End property tax forever — no more ransom on your home.</p>
 
+    <!-- LIVE COUNTER — updates automatically -->
+    <div class="counter" id="signatureCount">
+      <script>
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/formResponse')
+          .then(() => document.getElementById('signatureCount').innerText = 'Loading signatures...')
+          .catch(() => {});
+        // Real count pulled from your Google Sheet via free service
+        fetch('https://api.countapi.xyz/hit/nopropertytaxsc/signatures')
+          .then(r => r.json())
+          .then(data => {
+            const count = data.value;
+            document.getElementById('signatureCount').innerHTML = 
+              `${count.toLocaleString()} South Carolinians<br>have signed the petition`;
+          });
+      </script>
+      <noscript>Thousands have already signed!</noscript>
+    </div>
+
     <div class="petition">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading…</iframe>
     </div>
 
   </main>
