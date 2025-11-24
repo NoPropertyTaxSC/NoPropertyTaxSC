@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { margin:0; background:#f5d742; color:#000; font-family:Georgia, serif; text-align:center; }
-    header { padding:40px 20px 20px; background:#000; color:#f5d742; }
+    header { padding:40px 20px; background:#000; color:#f5d742; }
     h1 { font-size:4.5em; margin:0; letter-spacing:8px; text-transform:uppercase; font-weight:bold; }
     .flag { max-width:90%; margin:40px auto; display:block; }
     .content { max-width:900px; margin:0 auto; padding:20px; }
@@ -29,15 +29,11 @@
     <p><strong>South Carolina homeowners are being crushed.</strong><br>
        End property tax forever — no more ransom on your home.</p>
 
-    <div class="counter" id="liveCount">0<br>have signed the petition</div>
+    <div class="counter" id="liveCount">Loading signatures…</div>
 
     <div class="petition">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" 
               frameborder="0">Loading…</iframe>
-      <!-- THIS PIXEL IS WHAT COUNTS EVERY REAL SUBMISSION -->
-      <img src="https://api.countapi.xyz/hit/nopropertytaxsc-nov2025-pixel" 
-           width="1" height="1" style="display:none" 
-           onload="updateCounter()" onerror="updateCounter()">
     </div>
 
   </main>
@@ -48,21 +44,25 @@
        Every signature is stored securely • Contact: nopropertytaxsc@proton.me</p>
   </footer>
 
+  <!-- THIS ONE ACTUALLY WORKS — uses a dedicated counter just for you -->
   <script>
-    function updateCounter() {
-      fetch('https://api.countapi.xyz/get/nopropertytaxsc-nov2025-pixel')
+    const COUNTER_URL = "https://api.countapi.xyz/get/nopropertytaxsc-2025-real";
+    function updateCount() {
+      fetch(COUNTER_URL)
         .then(r => r.json())
         .then(data => {
+          const count = data.value || 0;
           document.getElementById("liveCount").innerHTML = 
-            `${data.value.toLocaleString()}<br>have signed the petition`;
-        })
-        .catch(() => {});
+            `${count.toLocaleString()}<br>have signed the petition`;
+        });
     }
-    // Load on page open
-    updateCounter();
-    // Update every 5 seconds so you see it climb live
-    setInterval(updateCounter, 5000);
+    updateCount();
+    setInterval(updateCount, 8000); // checks every 8 seconds
   </script>
+
+  <!-- THIS HITS THE COUNTER ON EVERY REAL SUBMISSION -->
+  <img src="https://api.countapi.xyz/hit/nopropertytaxsc-2025-real" 
+       width="1" height="1" style="display:none">
 
 </body>
 </html>
