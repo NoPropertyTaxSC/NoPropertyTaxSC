@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NO PROPERTY TAX SC</title>
+  <title>NO PROPERTY TAX SC – Official Petition</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin:0; background:#f5d742; color:#000; font-family:Georgia, serif; text-align:center; }
+    body { margin:0; background:#f5d742; color:#000; font-family:Georgia, serif; text-align:center; line-height:1.6; }
     header { padding:40px 20px; background:#000; color:#f5d742; }
     h1 { font-size:4.5em; margin:0; letter-spacing:8px; text-transform:uppercase; font-weight:bold; }
     .flag { max-width:90%; margin:40px auto; display:block; }
-    .content { max-width:900px; margin:0 auto; padding:20px; }
-    p { font-size:1.6em; margin:30px auto; max-width:800px; }
+    .content { max-width:900px; margin:0 auto 60px; padding:20px; font-size:1.3em; }
+    .petition-text { background:white; padding:40px; border:8px solid #000; margin:40px auto; text-align:left; }
+    .petition-text h2 { text-align:center; font-size:2.2em; margin-top:0; }
+    .petition-text ol { padding-left:30px; }
     .counter { font-size:4.5em; font-weight:bold; margin:60px; padding:30px; border:8px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
-    .petition { margin:60px auto; max-width:800px; border:8px solid #000; background:white; overflow:hidden; }
-    footer { background:#000; color:#f5d742; padding:40px; margin-top:80px; }
-    iframe { width:100%; height:950px; border:none; display:block; }
+    .form-box { margin:60px auto; max-width:800px; border:8px solid #000; background:white; overflow:hidden; }
+    footer { background:#000; color:#f5d742; padding:40px; }
+    iframe { width:100%; height:1000px; border:none; }
   </style>
 </head>
 <body>
@@ -26,16 +28,49 @@
   <main class="content">
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
 
-    <p><strong>South Carolina homeowners are being crushed.</strong><br>
-       End property tax forever — no more ransom on your home.</p>
+    <div class="petition-text">
+      <h2>South Carolina Petition to Abolish All Property Taxes</h2>
+      <p><strong>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</strong></p>
 
-    <!-- THIS COUNTER WILL NEVER GET STUCK -->
-    <div class="counter" id="liveCount">
-      0<br>have signed the petition
+      <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
+
+      <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
+
+      <p>For far too long, South Carolinians have been forced to pay an annual ransom to government simply to keep what we have worked a lifetime to own. A tax on property is not a tax on luxury — it is a tax on existence. It punishes families for putting down roots, seniors for staying in the homes they raised their children in, farmers for feeding our state, and small businesses for creating jobs. It drives retirees out of South Carolina and discourages new families and employers from moving in.</p>
+
+      <p>No citizen of a free state should ever face the threat of a tax lien or forced sale of their home because they fell behind on an arbitrary government bill tied to the assessed value of their property rather than their ability to pay.</p>
+
+      <p>We recognize that schools, public safety, roads, and local services must be funded. Therefore, we call on the General Assembly to:</p>
+
+      <ol>
+        <li>Permanently eliminate all property taxes on owner-occupied homes, rental properties, commercial buildings, farms, and personal property.</li>
+        <li>Replace the lost revenue through a combination of:
+          <ul>
+            <li>A modest, revenue-neutral increase in the state sales tax with enhanced rebates or credits for low- and fixed-income households</li>
+            <li>Closing corporate loopholes and special-interest exemptions</li>
+            <li>Dedicating a portion of existing surplus and economic growth revenue</li>
+            <li>Any other broad-based, voluntary consumption or economic activity taxes that do not punish ownership</li>
+          </ul>
+        </li>
+        <li>Place a binding constitutional amendment on the next general election ballot to prohibit any future legislature from re-imposing property taxes without a two-thirds supermajority vote of both houses and approval by the people in a statewide referendum.</li>
+      </ol>
+
+      <p>South Carolina already has one of the lowest property tax burdens in America — yet we still collect billions every year while our people live in fear of the next reassessment. It is time to finish the job.</p>
+
+      <p>We, the undersigned, declare that ownership is not a privilege to be rented from the government — it is a right.</p>
+
+      <p><strong>Let South Carolina lead the nation once again.<br>
+      Abolish property taxes now.<br>
+      Make South Carolina the True Property Tax-Free State.</strong></p>
+
+      <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
 
-    <div class="petition">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading…</iframe>
+    <!-- Optional counter – you can delete this whole block if you want -->
+    <div class="counter" id="liveCount">Signatures loading…</div>
+
+    <div class="form-box">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
 
   </main>
@@ -45,27 +80,6 @@
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@proton.me</p>
   </footer>
-
-  <!-- BULLETPROOF COUNTER — works 100 % of the time -->
-  <script>
-    const key = "nopropertytaxsc-2025-final";
-    function update() {
-      fetch(`https://api.countapi.xyz/get/${key}`)
-        .then(r => r.json())
-        .then(data => {
-          document.getElementById("liveCount").innerHTML = 
-            `${(data.value || 0).toLocaleString()}<br>have signed the petition`;
-        })
-        .catch(() => {
-          // if the service is ever down, just keep showing the last number
-        });
-    }
-    update();
-    setInterval(update, 10000); // refresh every 10 seconds
-
-    // Every page view after a signature bumps the counter
-    fetch(`https://api.countapi.xyz/hit/${key}`);
-  </script>
 
 </body>
 </html>
