@@ -120,18 +120,19 @@
   <a href="#" class="back-to-top">Back to Top</a>
   <!-- Live Counter + Reps Script -->
   <script>
-    function updateSignatureCount() {
-      fetch('https://script.google.com/macros/s/AKfycbxypRAoCUcH-b7A9edOF77X3lkG5pPpzfnmpcwK7yXszm641lSup_vOeFYNAjtznLpD/exec')
+    const counterKey = "nopropertytaxsc-2025-nov";
+    // Bump the counter on every page load (after signing)
+    fetch(`https://api.countapi.xyz/hit/${counterKey}`);
+    // Show current count
+    function updateCount() {
+      fetch(`https://api.countapi.xyz/get/${counterKey}`)
         .then(r => r.json())
-        .then(data => {
-          document.getElementById('liveCount').innerHTML = `${data.count.toLocaleString()}<br>have signed the petition`;
-        })
-        .catch(() => {
-          document.getElementById('liveCount').innerHTML = 'Signatures loading…';
+        .then(d => {
+          document.getElementById("liveCount").innerHTML = `${(d.value||0).toLocaleString()}<br>have signed the petition`;
         });
     }
-    updateSignatureCount();
-    setInterval(updateSignatureCount, 10000);
+    updateCount();
+    setInterval(updateCount, 8000);
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
       if (!zip || zip.length !== 5 || isNaN(zip)) {
