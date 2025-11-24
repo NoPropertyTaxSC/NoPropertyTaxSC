@@ -9,33 +9,38 @@
     header { padding:40px 20px; background:#000; color:#f5d742; }
     h1 { font-size:4.5em; margin:0; letter-spacing:8px; text-transform:uppercase; font-weight:bold; }
     .flag { max-width:90%; margin:40px auto; display:block; }
-    .content { max-width:900px; margin:0 auto 60px; padding:20px; font-size:1.1em; }
-    .petition-text { background:white; padding:40px; border:8px solid #000; margin:40px auto; text-align:left; }
-    .petition-text h2 { text-align:center; font-size:2.2em; margin-top:0; }
-    .petition-text ol, .petition-text ul { padding-left:30px; }
-    .form-box { margin:60px auto; max-width:800px; border:8px solid #000; background:white; overflow:hidden; }
+    .content { max-width:900px; margin:0 auto 60px; padding:20px; }
+    .petition-text { background:white; padding:40px; border:8px solid #000; margin:40px auto; text-align:left; font-size:0.9em; max-height:600px; overflow-y:auto; }
+    .petition-text h2 { text-align:center; font-size:2em; margin-top:0; }
+    .form-box { margin:60px auto; max-width:900px; border:8px solid #000; background:white; overflow:hidden; }
+    iframe { width:100%; height:1200px; border:none; }
+    .counter { font-size:4.5em; font-weight:bold; margin:60px; padding:30px; border:8px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
+    .donate-section { margin:60px auto; }
+    .donate-btn { display:inline-block; padding:18px 60px; font-size:2em; font-weight:bold; color:white; background:red; text-decoration:none; border:5px solid #000; text-transform:uppercase; }
+    .donate-btn:hover { background:#f5d742; color:#000; }
+    .social-buttons a, .share-btn { display:inline-block; margin:20px; padding:18px 60px; font-size:2em; font-weight:bold; color:#f5d742; background:#000; text-decoration:none; border:5px solid #000; text-transform:uppercase; }
+    .social-buttons a:hover, .share-btn:hover { background:#f5d742; color:#000; }
     .reps-section { background:white; padding:40px; border:8px solid #000; margin:60px auto; max-width:900px; }
     .reps-section h2 { text-align:center; font-size:2em; }
     .zip-lookup input { padding:12px; font-size:1.3em; width:220px; border:3px solid #000; }
     .find-btn { padding:12px 30px; font-size:1.3em; background:#000; color:#f5d742; border:3px solid #000; cursor:pointer; }
     .find-btn:hover { background:#f5d742; color:#000; }
-    .social-buttons a { display:inline-block; margin:20px; padding:18px 60px; font-size:2em; font-weight:bold; color:#f5d742; background:#000; text-decoration:none; border:5px solid #000; text-transform:uppercase; }
-    .social-buttons a:hover { background:#f5d742; color:#000; }
-    .donate-section { margin:60px auto; }
-    .donate-btn { display:inline-block; margin:20px; padding:18px 60px; font-size:2em; font-weight:bold; color:#f5d742; background:#000; text-decoration:none; border:5px solid #000; text-transform:uppercase; }
-    .donate-btn:hover { background:#f5d742; color:#000; }
     .email-template { background:#f9f9f9; padding:25px; margin:30px 0; border-left:6px solid #000; font-size:1.2em; }
     footer { background:#000; color:#f5d742; padding:40px; }
-    iframe { width:100%; height:1000px; border:none; }
+    .back-to-top { position:fixed; bottom:20px; right:20px; padding:12px 24px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1.1em; }
+    .back-to-top:hover { background:#f5d742; color:#000; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>No Property Tax SC</h1>
   </header>
+
   <main class="content">
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
-    <!-- Full Petition Text -->
+
+    <!-- Scrollable Petition Text -->
     <div class="petition-text">
       <h2>South Carolina Petition to Abolish All Property Taxes and Replace Them with a Fair, Broad-Based Revenue System</h2>
       <p><strong>Title:</strong><br>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
@@ -61,11 +66,29 @@
       <p><strong>Let South Carolina lead the nation once again.<br>Abolish property taxes now.<br>Make South Carolina the True Property Tax-Free State.</strong></p>
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
-    <!-- Petition Form -->
+
+    <!-- Bigger Form -->
     <div class="form-box">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
-    <!-- Find Your Reps + Email Template -->
+
+    <!-- Live Signature Counter -->
+    <div class="counter" id="liveCount">Loading signatures…</div>
+
+    <!-- Social + Share + Donate (all together) -->
+    <div class="social-buttons">
+      <a href="https://x.com/intent/tweet?text=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC&url=https://nopropertytaxsc.com" target="_blank" class="share-btn">Share on X</a>
+      <a href="https://www.instagram.com/?caption=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC" target="_blank" class="share-btn">Share on Instagram</a>
+      <a href="https://x.com/nopropertytaxsc" target="_blank">Follow on X</a>
+      <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
+    </div>
+
+    <div class="donate-section">
+      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">If you would like to support the movement, donate below</p>
+      <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
+    </div>
+
+    <!-- Reps Section – now below donate/social -->
     <div class="reps-section">
       <h2>Contact Your State Representatives</h2>
       <p>Find your House and Senate reps by ZIP code. Tell them: “I am not a slave to the state, I deserve full ownership, not a rental from the government - vote to abolish Property Tax in 2026”</p>
@@ -83,22 +106,34 @@
         <p>Sincerely,<br>[Your Full Name]<br>[Your City/Zip]</p>
       </div>
     </div>
-    <!-- Donate Button -->
-    <div class="donate-section">
-      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">If you would like to support the movement, donate below</p>
-      <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
-    </div>
-    <!-- Social Buttons -->
-    <div class="social-buttons">
-      <a href="https://x.com/nopropertytaxsc" target="_blank">Follow on X</a>
-      <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
-    </div>
+
   </main>
+
   <footer>
     <p><strong>No Property Tax South Carolina</strong><br>
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">Back to Top</a>
+
+  <!-- Live Signature Counter Script -->
+  <script>
+    function updateSignatureCount() {
+      fetch('https://script.google.com/macros/s/AKfycbwtoIcPrG0dlSZ_V0Iiye-1EEuXJ2Kk2W8lNCbaeGs3Bm_YINN2zd5_rFTTXHnA9taY/exec')
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById('liveCount').innerHTML = `${data.count.toLocaleString()}<br>have signed the petition`;
+        })
+        .catch(() => {
+          document.getElementById('liveCount').innerHTML = 'Signatures loading…';
+        });
+    }
+    updateSignatureCount();
+    setInterval(updateSignatureCount, 10000); // updates every 10 seconds
+  </script>
+
   <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
@@ -111,5 +146,6 @@
       document.getElementById('repsResult').innerHTML = '<p>Opening official lookup in new tab...<br>Your reps\' names, phone numbers, and emails will appear there. Use the template above!</p>';
     }
   </script>
+
 </body>
 </html>
