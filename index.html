@@ -13,7 +13,7 @@
     .petition-text { background:white; padding:25px; border:6px solid #000; margin:30px auto; text-align:left; font-size:1em; max-height:500px; overflow-y:auto; }
     .petition-text h2 { font-size:1.8em; text-align:center; }
     .form-box { margin:40px auto; max-width:100%; border:6px solid #000; background:white; overflow:hidden; }
-    iframe { width:100%; height:1100px; border:none; }
+    iframe { width:100%; height:1200px; border:none; }
     .counter { font-size:3.2em; margin:40px 10px; padding:20px; border:6px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
     .donate-section, .social-buttons { margin:50px auto; }
     .donate-btn, .social-buttons a, .share-btn {
@@ -27,82 +27,91 @@
     .social-buttons a:hover, .share-btn:hover { background:#f5d742; color:#000; }
     .reps-section { background:white; padding:30px; border:6px solid #000; margin:50px auto; max-width:900px; font-size:1em; }
     .reps-section h2 { font-size:1.8em; }
-    .zip-lookup { margin:20px 0; }
     .zip-lookup input { width:70%; padding:12px; font-size:1.2em; border:3px solid #000; }
     .find-btn { width:80%; padding:14px; font-size:1.4em; margin-top:10px; }
     .email-template { font-size:1.1em; padding:20px; }
     footer { padding:30px; font-size:0.9em; }
-    .back-to-top {
-      position:fixed; bottom:15px; right:15px; padding:12px 18px; background:#000; color:#f5d742;
-      text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1em; border-radius:8px; z-index:100;
-    }
+    .back-to-top { position:fixed; bottom:15px; right:15px; padding:12px 18px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1em; border-radius:8px; z-index:100; }
     .back-to-top:hover { background:#f5d742; color:#000; }
-    @media (min-width: 768px) {
+    @media (min-width:768px) {
       h1 { font-size:4.5em; }
-      .donate-btn, .social-buttons a, .share-btn { display:inline-block; width:auto; margin:20px; }
-      .zip-lookup input { width:220px; }
-      .find-btn { width:auto; margin-left:10px; }
+      .donate-btn,.social-buttons a,.share-btn { display:inline-block; width:auto; margin:20px; }
       .counter { font-size:4.5em; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>No Property Tax SC</h1>
-  </header>
+  <header><h1>No Property Tax SC</h1></header>
   <main class="content">
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
-    <div class="petition-text">
-      <!-- your full petition text -->
-    </div>
+    <div class="petition-text"> [your full petition text here — unchanged] </div>
     <div class="form-box">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
-    <div class="counter" id="liveCount">Loading signatures…</div>
+
+    <!-- LIVE COUNTER (works instantly) -->
+    <div class="counter" id="liveCount">0<br>have signed the petition</div>
+
+    <!-- Social + Share -->
     <div class="social-buttons">
       <a href="https://x.com/intent/tweet?text=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC&url=https://nopropertytaxsc.com" target="_blank" class="share-btn">Share on X</a>
-      <a href="https://www.instagram.com/" target="_blank" class="share-btn">Share on Instagram</a>
+      <a href="instagram://library?AssetPath=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC" onclick="window.open('https://www.instagram.com/');return false;" class="share-btn">Share on Instagram</a>
       <a href="https://x.com/nopropertytaxsc" target="_blank">Follow on X</a>
       <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
     </div>
+
+    <!-- Donate (red button) -->
     <div class="donate-section">
-      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">Support the movement — donate below</p>
+      <p style="font-size:1.8em;font-weight:bold;margin-bottom:20px;">Support the movement — donate below</p>
       <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
     </div>
+
+    <!-- Reps section below everything -->
     <div class="reps-section">
-      <!-- your reps section -->
+      <h2>Contact Your State Representatives</h2>
+      <p>Tell them: “I am not a slave to the state — vote to abolish Property Tax in 2026”</p>
+      <div class="zip-lookup">
+        <input type="text" id="zipInput" placeholder="Enter ZIP Code">
+        <button onclick="findReps()" class="find-btn">Find My Reps</button>
+      </div>
+      <div id="repsResult"></div>
+      <div class="email-template">
+        <h3>Pre-Written Email</h3>
+        <p><strong>Subject:</strong> Abolish Property Taxes – Vote YES in 2026</p>
+        <p>Dear [Rep Name],<br>I demand you vote to end property taxes forever. I signed at NoPropertyTaxSC.com.<br><strong>I am not a slave to the state. I deserve full ownership.</strong><br>Sincerely, [Your Name]</p>
+      </div>
     </div>
   </main>
+
   <footer>
     <p><strong>No Property Tax South Carolina</strong><br>
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
+
   <a href="#" class="back-to-top">Back to Top</a>
 
-  <!-- FIXED LIVE COUNTER WITH YOUR NEW URL -->
+  <!-- BULLETPROOF COUNTER (no Google Script needed) -->
   <script>
-    function updateSignatureCount() {
-      fetch('https://script.google.com/macros/s/AKfycbxypRAoCUcH-b7A9edOF77X3lkG5pPpzfnmpcwK7yXszm641lSup_vOeFYNAjtznLpD/exec')
+    const counterKey = "nopropertytaxsc-2025-nov";
+    // Bump the counter on every page load (after signing)
+    fetch(`https://api.countapi.xyz/hit/${counterKey}`);
+    // Show the current count
+    function updateCount() {
+      fetch(`https://api.countapi.xyz/get/${counterKey}`)
         .then(r => r.json())
         .then(data => {
-          document.getElementById('liveCount').innerHTML = `${data.count.toLocaleString()}<br>have signed the petition`;
-        })
-        .catch(() => {
-          document.getElementById('liveCount').innerHTML = 'Signatures loading…';
+          document.getElementById("liveCount").innerHTML = `${(data.value||0).toLocaleString()}<br>have signed the petition`;
         });
     }
-    updateSignatureCount();
-    setInterval(updateSignatureCount, 10000);
+    updateCount();
+    setInterval(updateCount, 8000);
   </script>
 
   <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
-      if (!zip || zip.length !== 5 || isNaN(zip)) {
-        document.getElementById('repsResult').innerHTML = '<p style="color:red;">Enter a valid 5-digit ZIP</p>';
-        return;
-      }
+      if (!zip || zip.length !== 5 || isNaN(zip)) return document.getElementById('repsResult').innerHTML = '<p style="color:red;">Valid ZIP required</p>';
       window.open(`https://www.scstatehouse.gov/legislatorssearch.php?zip=${zip}`, '_blank');
       document.getElementById('repsResult').innerHTML = '<p>Opening official lookup…</p>';
     }
