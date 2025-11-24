@@ -9,12 +9,19 @@
     header { padding:40px 20px; background:#000; color:#f5d742; }
     h1 { font-size:4.5em; margin:0; letter-spacing:8px; text-transform:uppercase; font-weight:bold; }
     .flag { max-width:90%; margin:40px auto; display:block; }
-    .content { max-width:900px; margin:0 auto 60px; padding:20px; font-size:1.3em; }
+    .content { max-width:900px; margin:0 auto 60px; padding:20px; font-size:1.1em; }
     .petition-text { background:white; padding:40px; border:8px solid #000; margin:40px auto; text-align:left; }
     .petition-text h2 { text-align:center; font-size:2.2em; margin-top:0; }
-    .petition-text ol { padding-left:30px; }
-    .counter { font-size:4.5em; font-weight:bold; margin:60px; padding:30px; border:8px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
+    .petition-text ol, .petition-text ul { padding-left:30px; }
     .form-box { margin:60px auto; max-width:800px; border:8px solid #000; background:white; overflow:hidden; }
+    .reps-section { background:white; padding:40px; border:8px solid #000; margin:40px auto; max-width:900px; text-align:left; }
+    .reps-section h2 { text-align:center; font-size:2em; }
+    .zip-lookup { margin:20px 0; }
+    .zip-input { padding:10px; font-size:1.2em; width:200px; }
+    .reps-list { margin-top:20px; }
+    .rep-card { border:2px solid #000; padding:15px; margin:10px 0; background:#f9f9f9; }
+    .rep-name { font-weight:bold; font-size:1.3em; }
+    .rep-contact a { color:#000; text-decoration:none; }
     footer { background:#000; color:#f5d742; padding:40px; }
     iframe { width:100%; height:1000px; border:none; }
   </style>
@@ -29,14 +36,15 @@
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
 
     <div class="petition-text">
-      <h2>South Carolina Petition to Abolish All Property Taxes</h2>
-      <p><strong>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</strong></p>
+      <h2>South Carolina Petition to Abolish All Property Taxes and Replace Them with a Fair, Broad-Based Revenue System</h2>
+      <p><strong>Title:</strong><br>
+      Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
 
       <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
 
       <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
 
-      <p>For far too long, South Carolinians have been forced to pay an annual ransom to government simply to keep what we have worked a lifetime to own. A tax on property is not a tax on luxury — it is a tax on existence. It punishes families for putting down roots, seniors for staying in the homes they raised their children in, farmers for feeding our state, and small businesses for creating jobs. It drives retirees out of South Carolina and discourages new families and employers from moving in.</p>
+      <p>For far too long, South Carolinians have been forced to pay an annual ransom to government simply to keep what we have worked a lifetime to own. A tax on property is not a tax on luxury—it is a tax on existence. It punishes families for putting down roots, seniors for staying in the homes they raised their children in, farmers for feeding our state, and small businesses for creating jobs. It drives retirees out of South Carolina and discourages new families and employers from moving in.</p>
 
       <p>No citizen of a free state should ever face the threat of a tax lien or forced sale of their home because they fell behind on an arbitrary government bill tied to the assessed value of their property rather than their ability to pay.</p>
 
@@ -55,9 +63,9 @@
         <li>Place a binding constitutional amendment on the next general election ballot to prohibit any future legislature from re-imposing property taxes without a two-thirds supermajority vote of both houses and approval by the people in a statewide referendum.</li>
       </ol>
 
-      <p>South Carolina already has one of the lowest property tax burdens in America — yet we still collect billions every year while our people live in fear of the next reassessment. It is time to finish the job.</p>
+      <p>South Carolina already has one of the lowest property tax burdens in America—yet we still collect billions every year while our people live in fear of the next reassessment. It is time to finish the job. Nine states thrive without a personal income tax; it is past time for South Carolina to become the first state in the Southeast to free its citizens from property taxation entirely.</p>
 
-      <p>We, the undersigned, declare that ownership is not a privilege to be rented from the government — it is a right.</p>
+      <p>We, the undersigned, declare that ownership is not a privilege to be rented from the government—it is a right. We will remember at the ballot box which elected officials stand with the people and which stand with the tax collectors.</p>
 
       <p><strong>Let South Carolina lead the nation once again.<br>
       Abolish property taxes now.<br>
@@ -66,13 +74,20 @@
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
 
-    <!-- Optional counter – you can delete this whole block if you want -->
-    <div class="counter" id="liveCount">Signatures loading…</div>
-
     <div class="form-box">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
 
+    <!-- CONTACT YOUR REPS SECTION -->
+    <div class="reps-section">
+      <h2>Contact Your State Representatives</h2>
+      <p>Find your House and Senate reps by ZIP code. Call or email them: "I oppose property taxes — vote to abolish them in 2026!"</p>
+      <div class="zip-lookup">
+        <input type="text" id="zipInput" placeholder="Enter ZIP Code (e.g., 29201)" class="zip-input">
+        <button onclick="findReps()">Find My Reps</button>
+      </div>
+      <div id="repsList" class="reps-list"></div>
+    </div>
   </main>
 
   <footer>
@@ -80,6 +95,54 @@
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@proton.me</p>
   </footer>
+
+  <script>
+    async function findReps() {
+      const zip = document.getElementById('zipInput').value;
+      if (!zip) return;
+      try {
+        const response = await fetch(`https://www.scstatehouse.gov/legislatorssearch.php?zip=${zip}`);
+        const text = await response.text();
+        // Parse the HTML response for reps (simple JS parsing for name, district, contact)
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const reps = [];
+        // Extract House reps
+        doc.querySelectorAll('.member-name').forEach(el => {
+          const name = el.textContent.trim();
+          const district = el.closest('tr') ? el.closest('tr').querySelector('.district').textContent : '';
+          const phone = el.closest('tr') ? el.closest('tr').querySelector('.phone').textContent : '';
+          const email = el.closest('tr') ? el.closest('tr').querySelector('.email a').href.replace('mailto:', '') : '';
+          reps.push({ name, district: `House District ${district}`, phone, email });
+        });
+        // Extract Senate reps
+        doc.querySelectorAll('.senator-name').forEach(el => {
+          const name = el.textContent.trim();
+          const district = el.closest('tr') ? el.closest('tr').querySelector('.district').textContent : '';
+          const phone = el.closest('tr') ? el.closest('tr').querySelector('.phone').textContent : '';
+          const email = el.closest('tr') ? el.closest('tr').querySelector('.email a').href.replace('mailto:', '') : '';
+          reps.push({ name, district: `Senate District ${district}`, phone, email });
+        });
+        displayReps(reps);
+      } catch (error) {
+        document.getElementById('repsList').innerHTML = '<p>Try again or visit <a href="https://www.scstatehouse.gov/legislatorssearch.php" target="_blank">scstatehouse.gov</a> to find your reps.</p>';
+      }
+    }
+    function displayReps(reps) {
+      let html = '<h3>Your Representatives:</h3>';
+      reps.forEach(rep => {
+        html += `
+          <div class="rep-card">
+            <div class="rep-name">${rep.name}</div>
+            <p><strong>District:</strong> ${rep.district}</p>
+            <p><strong>Phone:</strong> <a href="tel:${rep.phone}">${rep.phone}</a></p>
+            <p><strong>Email:</strong> <a href="mailto:${rep.email}">${rep.email}</a></p>
+          </div>
+        `;
+      });
+      document.getElementById('repsList').innerHTML = html;
+    }
+  </script>
 
 </body>
 </html>
