@@ -24,17 +24,15 @@
     .email-template { background:#f9f9f9; padding:25px; margin:30px 0; border-left:6px solid #000; font-size:1.2em; }
     footer { background:#000; color:#f5d742; padding:40px; }
     iframe { width:100%; height:1000px; border:none; }
+    .counter { font-size:4.5em; font-weight:bold; margin:60px; padding:30px; border:8px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
   </style>
 </head>
 <body>
-
   <header>
     <h1>No Property Tax SC</h1>
   </header>
-
   <main class="content">
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
-
     <!-- Full Petition Text -->
     <div class="petition-text">
       <h2>South Carolina Petition to Abolish All Property Taxes and Replace Them with a Fair, Broad-Based Revenue System</h2>
@@ -61,45 +59,39 @@
       <p><strong>Let South Carolina lead the nation once again.<br>Abolish property taxes now.<br>Make South Carolina the True Property Tax-Free State.</strong></p>
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
-
     <!-- Petition Form -->
     <div class="form-box">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
-
     <!-- Find Your Reps + Email Template -->
     <div class="reps-section">
       <h2>Contact Your State Representatives</h2>
-      <p>Find your House and Senate reps by ZIP code. Tell them: “I am not a slave to the state, I deserve full ownership, not a rental from the government - vote to abolish Property Tax in 2026!”</p>
+      <p>Find your House and Senate reps by ZIP code. Tell them: “I am not a slave to the state, I deserve full ownership, not a rental from the government - vote to abolish Property Tax in 2026”</p>
       <div class="zip-lookup">
         <input type="text" id="zipInput" placeholder="Enter ZIP Code (e.g. 29201)" class="zip-input">
         <button onclick="findReps()" class="find-btn">Find My Reps</button>
       </div>
       <div id="repsResult"></div>
-
       <div class="email-template">
         <h3>Pre-Written Email Template (just copy & paste)</h3>
         <p><strong>Subject:</strong> Abolish Property Taxes in SC – Vote YES in 2026</p>
         <p>Dear [Representative/Senator Name],</p>
         <p>As your constituent in [Your City/Zip], I demand you support the complete abolition of property taxes in South Carolina. This regressive tax destroys families and businesses. I signed the official petition at NoPropertyTaxSC.com and expect you to vote YES on the 2026 constitutional amendment to end property taxes forever.</p>
+        <p><strong>I am not a slave to the state. I deserve full ownership, not a rental from the government.</strong></p>
         <p>Sincerely,<br>[Your Full Name]<br>[Your City/Zip]</p>
       </div>
     </div>
-
     <!-- Social Buttons -->
     <div class="social-buttons">
       <a href="https://x.com/nopropertytaxsc" target="_blank">Follow on X</a>
       <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
     </div>
-
   </main>
-
   <footer>
     <p><strong>No Property Tax South Carolina</strong><br>
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
-
   <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
@@ -112,6 +104,5 @@
       document.getElementById('repsResult').innerHTML = '<p>Opening official lookup in new tab...<br>Your reps\' names, phone numbers, and emails will appear there. Use the template above!</p>';
     }
   </script>
-
 </body>
 </html>
