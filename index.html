@@ -33,6 +33,12 @@
     .email-template { font-size:1.1em; padding:20px; }
     .all-legislators-btn { display:block; width:90%; max-width:400px; margin:20px auto; padding:18px; font-size:1.8em; font-weight:bold; background:#000; color:#f5d742; text-decoration:none; border:5px solid #000; text-transform:uppercase; box-sizing:border-box; }
     .all-legislators-btn:hover { background:#f5d742; color:#000; }
+    .numbers-section { background:#000; color:#f5d742; padding:40px 20px; margin:60px auto; max-width:900px; border:6px solid #000; }
+    .numbers-section h2 { font-size:2.5em; margin-bottom:30px; }
+    .numbers-table { width:100%; border-collapse:collapse; background:#fff; color:#000; }
+    .numbers-table th, .numbers-table td { padding:12px; text-align:left; border:3px solid #000; }
+    .numbers-table th { background:#f5d742; color:#000; font-weight:bold; }
+    .numbers-table tr:nth-child(even) { background:#f9f9f9; }
     footer { padding:30px; font-size:0.9em; }
     .back-to-top { position:fixed; bottom:15px; right:15px; padding:12px 18px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1em; border-radius:8px; z-index:100; }
     .back-to-top:hover { background:#f5d742; color:#000; }
@@ -77,10 +83,10 @@
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
     </div>
 
-    <!-- NEW CALL-TO-ACTION BOX -->
+    <!-- CALL-TO-ACTION -->
     <div class="call-to-action">
-      If you agree with this petition, contact your state Representative using the box following the petition signing sheet.  
-      Use your ZIP code to look up your state Representatives, then return back to this website and click the “CONTACT ALL LEGISLATORS” button.  
+      If you agree with this petition, contact your state Representative using the box following the petition signing sheet.<br>
+      Use your ZIP code to look up your state Representatives, then return back to this website and click the “CONTACT ALL LEGISLATORS” button.<br>
       Find your Rep’s name and write them a message telling them to abolish property tax.
     </div>
 
@@ -89,7 +95,7 @@
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
     </div>
 
-    <!-- CONTACT REPS SECTION – IMMEDIATELY AFTER THE FORM -->
+    <!-- CONTACT REPS SECTION -->
     <div class="reps-section">
       <h2>Contact Your State Representatives</h2>
       <p>Tell them: “I am not a slave to the state — vote to abolish Property Tax in 2026”</p>
@@ -108,6 +114,26 @@
 
     <!-- Live Signature Counter -->
     <div class="counter" id="liveCount">100+<br>have signed the petition</div>
+
+    <!-- BY THE NUMBERS – FULL BREAKDOWN -->
+    <div class="numbers-section">
+      <h2>BY THE NUMBERS – How We Replace $4.1 Billion Revenue-Neutral</h2>
+      <table class="numbers-table">
+        <tr><th>Source</th><th>Change</th><th>Revenue Generated</th></tr>
+        <tr><td>State Sales Tax</td><td>6% → 7.25% (+1.25 pts)</td><td>+$2.25 billion</td></tr>
+        <tr><td>Low-Income Rebates</td><td>Full refund for households under $40k</td><td>– $340 million</td></tr>
+        <tr><td><strong>Net Sales Tax</strong></td><td></td><td><strong>+$1.91 billion</strong></td></tr>
+        <tr><td>Close Major Corporate Loopholes</td><td>Top 15 exemptions eliminated</td><td>+$1.10 billion</td></tr>
+        <tr><td>Redirect Surplus & Growth</td><td>60% of recurring surplus + growth</td><td>+$750 million</td></tr>
+        <tr><td>Luxury/Excise Buffer</td><td>2% on purchases over $5k</td><td>+$350 million</td></tr>
+        <tr><td colspan="3" style="background:#f5d742; font-weight:bold; text-align:center;">
+          TOTAL NEW REVENUE = <strong>+$4.11 billion</strong> (covers the $4.1B property tax hole with $10M cushion)
+        </td></tr>
+      </table>
+      <p style="margin-top:20px; color:#f5d742; font-size:1.1em;">
+        <strong>This is fully funded, revenue-neutral, and protects schools, police, and fire.</strong>
+      </p>
+    </div>
 
     <!-- Share + Social + Donate -->
     <div class="social-buttons">
@@ -129,7 +155,6 @@
   </footer>
   <a href="#" class="back-to-top">Back to Top</a>
 
-  <!-- Reps Script -->
   <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
