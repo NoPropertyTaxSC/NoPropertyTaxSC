@@ -42,6 +42,7 @@
     footer { padding:30px; font-size:0.9em; }
     .back-to-top { position:fixed; bottom:15px; right:15px; padding:12px 18px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1em; border-radius:8px; z-index:100; }
     .back-to-top:hover { background:#f5d742; color:#000; }
+    .note { background:#000; color:#f5d742; padding:20px; margin:20px auto; max-width:900px; font-size:1.2em; font-weight:bold; border:6px solid #000; }
     @media (min-width:768px) {
       h1 { font-size:4.5em; }
       .donate-btn,.social-buttons a,.share-btn,.all-legislators-btn { display:inline-block; width:auto; margin:20px; }
@@ -56,9 +57,14 @@
   <main class="content">
     <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
 
+    <!-- NEW NOTE AT THE TOP -->
+    <div class="note">
+      Petition signing form is at the bottom
+    </div>
+
     <!-- FULL PETITION TEXT -->
     <div class="petition-text">
-      <h2>South Carolina Petition to Abolish All Property Taxes</h2>
+      <h2>South Carolina Petition to Abolish All Property Taxes and Replace Them with a Fair, Broad-Based Revenue System</h2>
       <p><strong>Title:</strong><br>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
       <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
       <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
@@ -81,35 +87,6 @@
       <p>We, the undersigned, declare that ownership is not a privilege to be rented from the government—it is a right.</p>
       <p><strong>Let South Carolina lead the nation once again.<br>Abolish property taxes now.<br>Make South Carolina the True Property Tax-Free State.</strong></p>
       <p><strong>We demand action in the 2026 legislative session.</strong></p>
-    </div>
-
-    <!-- CALL-TO-ACTION -->
-    <div class="call-to-action">
-      If you agree with this petition, contact your state Representative using the box following the petition signing sheet.<br>
-      Use your ZIP code to look up your state Representatives, then return back to this website and click the “CONTACT ALL LEGISLATORS” button.<br>
-      Find your Rep’s name and write them a message telling them to abolish property tax.
-    </div>
-
-    <!-- Google Form Petition -->
-    <div class="form-box">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
-    </div>
-
-    <!-- CONTACT REPS SECTION -->
-    <div class="reps-section">
-      <h2>Contact Your State Representatives</h2>
-      <p>Tell them: “I am not a slave to the state — vote to abolish Property Tax in 2026”</p>
-      <div class="zip-lookup">
-        <input type="text" id="zipInput" placeholder="Enter ZIP Code">
-        <button onclick="findReps()" class="find-btn">Find My Reps</button>
-      </div>
-      <div id="repsResult"></div>
-      <div class="email-template">
-        <h3>Pre-Written Email</h3>
-        <p><strong>Subject:</strong> Abolish Property Taxes – Vote YES in 2026</p>
-        <p>Dear [Rep Name],<br>I demand you vote to end property taxes forever. I signed at NoPropertyTaxSC.com.<br><strong>I am not a slave to the state. I deserve full ownership.</strong><br>Sincerely, [Your Name]</p>
-      </div>
-      <a href="https://www.scstatehouse.gov/email.php?chamber=B" target="_blank" class="all-legislators-btn">CONTACT ALL LEGISLATORS</a>
     </div>
 
     <!-- Live Signature Counter -->
@@ -146,15 +123,27 @@
       <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">Support the movement — donate below</p>
       <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
     </div>
-  </main>
 
+    <!-- CALL-TO-ACTION -->
+    <div class="call-to-action">
+      If you agree with this petition, contact your state Representative using the box following the petition signing sheet.<br>
+      Use your ZIP code to look up your state Representatives, then return back to this website and click the “CONTACT ALL LEGISLATORS” button.<br>
+      Find your Rep’s name and write them a message telling them to abolish property tax.
+    </div>
+
+    <!-- Google Form Petition – NOW AT THE END -->
+    <div class="form-box">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
+    </div>
+
+  </main>
   <footer>
     <p><strong>No Property Tax South Carolina</strong><br>
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
   <a href="#" class="back-to-top">Back to Top</a>
-
+  <!-- Reps Script -->
   <script>
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
