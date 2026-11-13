@@ -3,50 +3,114 @@
 <head>
   <meta charset="utf-8">
   <title>NO PROPERTY TAX SC – Official Petition</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
   <style>
-    body { margin:0; background:#f5d742; color:#000; font-family:Georgia, serif; text-align:center; line-height:1.6; }
-    header { padding:30px 15px; background:#000; color:#f5d742; }
-    h1 { font-size:2.8em; margin:0; letter-spacing:6px; text-transform:uppercase; font-weight:bold; }
-    .flag { max-width:90%; margin:30px auto; display:block; }
-    .content { max-width:900px; margin:0 auto 40px; padding:15px; }
-    .petition-text { background:white; padding:25px; border:6px solid #000; margin:30px auto; text-align:left; font-size:1em; max-height:500px; overflow-y:auto; }
-    .petition-text h2 { font-size:1.8em; text-align:center; }
-    .call-to-action { background:#000; color:#f5d742; padding:25px; margin:40px auto; max-width:900px; font-size:1.4em; font-weight:bold; border:6px solid #000; }
-    .form-box { margin:40px auto; max-width:100%; border:6px solid #000; background:white; overflow:hidden; position:relative; }
-    iframe { width:100%; height:1200px; border:none; }
-    .counter { font-size:3.2em; margin:40px 10px; padding:20px; border:6px solid #000; background:rgba(0,0,0,0.1); display:inline-block; }
-    .donate-section, .social-buttons { margin:50px auto; }
-    .donate-btn, .social-buttons a, .share-btn {
-      display:block; width:90%; max-width:400px; margin:15px auto; padding:18px;
-      font-size:1.8em; font-weight:bold; text-decoration:none; border:5px solid #000;
-      text-transform:uppercase; box-sizing:border-box;
+    /* ---------- BASE (mobile first) ---------- */
+    *, *::before, *::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body { margin:0; background:#f5d742; color:#000; font-family:Georgia, serif; text-align:center; line-height:1.55; font-size:17px; }
+    img { max-width:100%; height:auto; }
+
+    header { padding:22px 12px; background:#000; color:#f5d742; }
+    h1 { font-size:clamp(1.7rem, 8vw, 4.5rem); margin:0; letter-spacing:clamp(1px, 0.6vw, 6px); text-transform:uppercase; font-weight:bold; line-height:1.15; }
+
+    .content { max-width:900px; margin:0 auto 30px; padding:12px; }
+    .flag { width:100%; max-width:700px; margin:16px auto; display:block; }
+
+    /* Shared block style */
+    .block { border:4px solid #000; margin:22px auto; max-width:900px; }
+
+    .note { background:#000; color:#f5d742; padding:16px; font-size:1.1em; font-weight:bold; }
+    .note a { display:inline-block; margin-top:10px; background:#f5d742; color:#000; padding:10px 18px; text-decoration:none; border:3px solid #f5d742; text-transform:uppercase; font-size:0.95em; }
+
+    /* Petition text with expand toggle */
+    .petition-text { background:#fff; padding:18px; text-align:left; position:relative; }
+    .petition-text h2 { font-size:1.35em; text-align:center; margin-top:0; line-height:1.25; }
+    .petition-text ol, .petition-text ul { padding-left:1.25em; }
+    .petition-body { max-height:340px; overflow:hidden; position:relative; transition:max-height .3s ease; }
+    .petition-body::after { content:""; position:absolute; left:0; right:0; bottom:0; height:90px; background:linear-gradient(rgba(255,255,255,0), #fff); }
+    .petition-text.open .petition-body { max-height:none; }
+    .petition-text.open .petition-body::after { display:none; }
+    .toggle-btn { display:block; margin:14px auto 0; background:#000; color:#f5d742; border:3px solid #000; padding:10px 18px; font:bold 1em Georgia, serif; text-transform:uppercase; cursor:pointer; }
+
+    .call-to-action { background:#000; color:#f5d742; padding:18px; font-size:1.05em; font-weight:bold; text-align:left; }
+    .call-to-action ol { margin:8px 0 0; padding-left:1.3em; }
+    .call-to-action li { margin-bottom:6px; }
+
+    /* Live counter */
+    .counter { background:rgba(0,0,0,0.08); padding:18px 12px; display:block; }
+    .counter .num { display:block; font-size:clamp(2.6rem, 14vw, 5rem); font-weight:bold; line-height:1; font-variant-numeric:tabular-nums; }
+    .counter .label { display:block; font-size:1.1em; margin-top:6px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; }
+    .counter .live { display:inline-flex; align-items:center; gap:6px; font-size:0.8em; margin-top:8px; text-transform:uppercase; letter-spacing:1px; }
+    .counter .dot { width:10px; height:10px; border-radius:50%; background:#c00; animation:blink 1.6s infinite; }
+    .counter.bump .num { animation:bump .6s ease; }
+    @keyframes blink { 50% { opacity:.25; } }
+    @keyframes bump { 0%{transform:scale(1)} 40%{transform:scale(1.15)} 100%{transform:scale(1)} }
+
+    /* Numbers section */
+    .numbers-section { background:#000; color:#f5d742; padding:20px 12px; }
+    .numbers-section h2 { font-size:1.4em; margin:0 0 16px; line-height:1.25; }
+    .numbers-table { width:100%; border-collapse:collapse; background:#fff; color:#000; font-size:0.95em; }
+    .numbers-table th, .numbers-table td { padding:10px; text-align:left; border:2px solid #000; }
+    .numbers-table th { background:#f5d742; }
+    .numbers-table tr:nth-child(even) td { background:#f9f9f9; }
+    .numbers-table .total td { background:#f5d742; font-weight:bold; text-align:center; }
+    .numbers-section p { margin:16px 0 0; font-size:1em; }
+
+    /* Buttons */
+    .btn-row { margin:26px auto; display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .btn { display:block; width:100%; max-width:400px; padding:14px 12px; font-size:1.15em; font-weight:bold; text-decoration:none; border:4px solid #000; text-transform:uppercase; background:#000; color:#f5d742; cursor:pointer; font-family:Georgia, serif; }
+    .btn:hover, .btn:focus-visible { background:#f5d742; color:#000; }
+    .btn-donate { background:#d00000; color:#fff; }
+    .donate-section p { font-size:1.3em; font-weight:bold; margin:0 0 4px; }
+
+    /* Reps section */
+    .reps-section { background:#fff; padding:20px 14px; }
+    .reps-section h2 { font-size:1.4em; margin-top:0; line-height:1.25; }
+    .zip-lookup { display:flex; flex-direction:column; gap:10px; align-items:center; }
+    .zip-lookup input { width:100%; max-width:400px; padding:12px; font-size:1.1em; border:3px solid #000; text-align:center; border-radius:0; }
+    .email-template { text-align:left; background:#f7f7f7; border:2px dashed #000; padding:14px; margin-top:18px; font-size:1em; }
+    .email-template h3 { margin-top:0; text-align:center; }
+
+    /* Form */
+    .form-box { background:#fff; overflow:hidden; scroll-margin-top:10px; }
+    .form-box h2 { margin:16px 0 0; font-size:1.5em; }
+    .form-box iframe { width:100%; height:1500px; border:none; display:block; }
+
+    footer { padding:24px 14px 80px; font-size:0.9em; }
+
+    .back-to-top { position:fixed; bottom:calc(12px + env(safe-area-inset-bottom)); right:12px; padding:10px 14px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:2px solid #f5d742; font-size:0.85em; border-radius:8px; z-index:100; }
+
+    /* Stack the numbers table into cards on small phones */
+    @media (max-width:600px) {
+      .numbers-table thead { display:none; }
+      .numbers-table, .numbers-table tbody, .numbers-table tr, .numbers-table td { display:block; width:100%; }
+      .numbers-table tr { border:2px solid #000; margin-bottom:10px; background:#fff; }
+      .numbers-table td { border:none; border-bottom:1px solid #ddd; padding:8px 10px; display:flex; justify-content:space-between; gap:10px; text-align:right; }
+      .numbers-table td::before { content:attr(data-label); font-weight:bold; text-align:left; flex-shrink:0; }
+      .numbers-table td:empty { display:none; }
+      .numbers-table td:last-child { border-bottom:none; }
+      .numbers-table .total td { display:block; text-align:center; }
+      .numbers-table .total td::before { content:none; }
     }
-    .donate-btn { background:red; color:Wwhite; }
-    .donate-btn:hover { background:#f5d742; color:#000; }
-    .social-buttons a, .share-btn { background:#000; color:#f5d742; }
-    .social-buttons a:hover, .share-btn:hover { background:#f5d742; color:#000; }
-    .reps-section { background:white; padding:30px; border:6px solid #000; margin:50px auto; max-width:900px; font-size:1em; }
-    .reps-section h2 { font-size:1.8em; }
-    .zip-lookup input { width:70%; padding:12px; font-size:1.2em; border:3px solid #000; }
-    .find-btn { width:80%; padding:14px; font-size:1.4em; margin-top:10px; }
-    .email-template { font-size:1.1em; padding:20px; }
-    .all-legislators-btn { display:block; width:90%; max-width:400px; margin:20px auto; padding:18px; font-size:1.8em; font-weight:bold; background:#000; color:#f5d742; text-decoration:none; border:5px solid #000; text-transform:uppercase; box-sizing:border-box; }
-    .all-legislators-btn:hover { background:#f5d742; color:#000; }
-    .numbers-section { background:#000; color:#f5d742; padding:40px 20px; margin:60px auto; max-width:900px; border:6px solid #000; }
-    .numbers-section h2 { font-size:2.5em; margin-bottom:30px; }
-    .numbers-table { width:100%; border-collapse:collapse; background:#fff; color:#000; }
-    .numbers-table th, .numbers-table td { padding:12px; text-align:left; border:3px solid #000; }
-    .numbers-table th { background:#f5d742; color:#000; font-weight:bold; }
-    .numbers-table tr:nth-child(even) { background:#f9f9f9; }
-    .note { background:#000; color:#f5d742; padding:20px; margin:20px auto; max-width:900px; font-size:1.4em; font-weight:bold; border:6px solid #000; }
-    footer { padding:30px; font-size:0.9em; }
-    .back-to-top { position:fixed; bottom:15px; right:15px; padding:12px 18px; background:#000; color:#f5d742; text-decoration:none; font-weight:bold; border:3px solid #f5d742; font-size:1em; border-radius:8px; z-index:100; }
-    .back-to-top:hover { background:#f5d742; color:#000; }
+
+    /* ---------- DESKTOP ---------- */
     @media (min-width:768px) {
-      h1 { font-size:4.5em; }
-      .donate-btn,.social-buttons a,.share-btn,.all-legislators-btn { display:inline-block; width:auto; margin:20px; }
-      .counter { font-size:4.5em; }
+      body { font-size:18px; }
+      header { padding:30px 15px; }
+      .block { border-width:6px; margin:36px auto; }
+      .petition-text { padding:28px; }
+      .petition-text h2 { font-size:1.8em; }
+      .petition-body { max-height:500px; }
+      .note, .call-to-action { font-size:1.3em; padding:24px; }
+      .counter { display:inline-block; padding:22px 40px; }
+      .numbers-section { padding:36px 24px; }
+      .numbers-section h2 { font-size:2em; }
+      .btn-row { flex-direction:row; flex-wrap:wrap; justify-content:center; }
+      .btn { width:auto; min-width:260px; font-size:1.4em; }
+      .reps-section { padding:30px; }
+      .form-box iframe { height:1250px; }
     }
   </style>
 </head>
@@ -54,91 +118,103 @@
   <header>
     <h1>No Property Tax SC</h1>
   </header>
-  <main class="content">
-    <img src="NPTSC final.jpg" alt="No Property Tax SC Flag" class="flag">
 
-    <!-- NOTE AT THE TOP -->
-    <div class="note">
-      Petition signing form is at the bottom of the page
+  <main class="content">
+    <img src="NPTSC%20final.jpg" alt="No Property Tax SC Flag" class="flag">
+
+    <div class="note block">
+      The petition signing form is at the bottom of the page<br>
+      <a href="#sign">Sign the petition ↓</a>
+    </div>
+
+    <!-- LIVE SIGNATURE COUNTER -->
+    <div class="counter block" id="liveCount" aria-live="polite">
+      <span class="num" id="countNum">100+</span>
+      <span class="label">have signed the petition</span>
+      <span class="live"><span class="dot"></span>Live count</span>
     </div>
 
     <!-- FULL PETITION TEXT -->
-    <div class="petition-text">
+    <div class="petition-text block" id="petition">
       <h2>South Carolina Petition to Abolish All Property Taxes</h2>
-      <!-- [full petition text unchanged – kept exactly as you had it] -->
-      <p><strong>Title:</strong><br>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
-      <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
-      <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
-      <p>For far too long, South Carolinians have been forced to pay an annual ransom to government simply to keep what we have worked a lifetime to own. A tax on property is not a tax on luxury—it is a tax on existence. It punishes families for putting down roots, seniors for staying in the homes they raised their children in, farmers for feeding our state, and small businesses for creating jobs. It drives retirees out of South Carolina and discourages new families and employers from moving in.</p>
-      <p>No citizen of a free state should ever face the threat of a tax lien or forced sale of their home because they fell behind on an arbitrary government bill tied to the assessed value of their property rather than their ability to pay.</p>
-      <p>We recognize that schools, public safety, roads, and local services must be funded. Therefore, we call on the General Assembly to:</p>
-      <ol>
-        <li>Permanently eliminate all property taxes on owner-occupied homes, rental properties, commercial buildings, farms, and personal property.</li>
-        <li>Replace the lost revenue through a combination of:
-          <ul>
-            <li>A modest, revenue-neutral increase in the state sales tax with enhanced rebates or credits for low- and fixed-income households</li>
-            <li>Closing corporate loopholes and special-interest exemptions</li>
-            <li>Dedicating a portion of existing surplus and economic growth revenue</li>
-            <li>Any other broad-based, voluntary consumption or economic activity taxes that do not punish ownership</li>
-          </ul>
-        </li>
-        <li>Place a binding constitutional amendment on the next general election ballot to prohibit any future legislature from re-imposing property taxes without a two-thirds supermajority vote of both houses and approval by the people in a statewide referendum.</li>
-      </ol>
-      <p>South Carolina already has one of the lowest property tax burdens in America—yet we still collect billions every year while our people live in fear of the next reassessment. It is time to finish the job.</p>
-      <p>We, the undersigned, declare that ownership is not a privilege to be rented from the government—it is a right.</p>
-      <p><strong>Let South Carolina lead the nation once again.<br>Abolish property taxes now.<br>Make South Carolina the True Property Tax-Free State.</strong></p>
-      <p><strong>We demand action in the 2026 legislative session.</strong></p>
+      <div class="petition-body">
+        <p><strong>Title:</strong><br>Abolish Property Taxes in South Carolina – Let South Carolinians Truly Own Their Homes and Businesses</p>
+        <p>To the Honorable Members of the South Carolina General Assembly and Governor Henry McMaster:</p>
+        <p>We, the undersigned residents and taxpayers of South Carolina, respectfully demand the complete and permanent abolition of all ad valorem property taxes on real estate and personal property in our state.</p>
+        <p>For far too long, South Carolinians have been forced to pay an annual ransom to government simply to keep what we have worked a lifetime to own. A tax on property is not a tax on luxury—it is a tax on existence. It punishes families for putting down roots, seniors for staying in the homes they raised their children in, farmers for feeding our state, and small businesses for creating jobs. It drives retirees out of South Carolina and discourages new families and employers from moving in.</p>
+        <p>No citizen of a free state should ever face the threat of a tax lien or forced sale of their home because they fell behind on an arbitrary government bill tied to the assessed value of their property rather than their ability to pay.</p>
+        <p>We recognize that schools, public safety, roads, and local services must be funded. Therefore, we call on the General Assembly to:</p>
+        <ol>
+          <li>Permanently eliminate all property taxes on owner-occupied homes, rental properties, commercial buildings, farms, and personal property.</li>
+          <li>Replace the lost revenue through a combination of:
+            <ul>
+              <li>A modest, revenue-neutral increase in the state sales tax with enhanced rebates or credits for low- and fixed-income households</li>
+              <li>Closing corporate loopholes and special-interest exemptions</li>
+              <li>Dedicating a portion of existing surplus and economic growth revenue</li>
+              <li>Any other broad-based, voluntary consumption or economic activity taxes that do not punish ownership</li>
+            </ul>
+          </li>
+          <li>Place a binding constitutional amendment on the next general election ballot to prohibit any future legislature from re-imposing property taxes without a two-thirds supermajority vote of both houses and approval by the people in a statewide referendum.</li>
+        </ol>
+        <p>South Carolina already has one of the lowest property tax burdens in America—yet we still collect billions every year while our people live in fear of the next reassessment. It is time to finish the job.</p>
+        <p>We, the undersigned, declare that ownership is not a privilege to be rented from the government—it is a right.</p>
+        <p><strong>Let South Carolina lead the nation once again.<br>Abolish property taxes now.<br>Make South Carolina the True Property Tax-Free State.</strong></p>
+        <p><strong>We demand action in the 2026 legislative session.</strong></p>
+      </div>
+      <button type="button" class="toggle-btn" id="toggleBtn" aria-expanded="false">Read full petition ▾</button>
     </div>
 
     <!-- CALL-TO-ACTION -->
-    <div class="call-to-action">
-      If you agree with this petition, contact your state Representative using the box following the petition signing sheet.<br>
-      Use your ZIP code to look up your state Representatives, then return back to this website and click the “CONTACT ALL LEGISLATORS” button.<br>
-      Find your Rep’s name and write them a message telling them to abolish property tax.
+    <div class="call-to-action block">
+      If you agree with this petition, contact your state legislators:
+      <ol>
+        <li>Enter your ZIP in the box below to look up your state Representatives.</li>
+        <li>Come back to this page and tap “CONTACT ALL LEGISLATORS.”</li>
+        <li>Find your Rep’s name and tell them to abolish property tax.</li>
+      </ol>
     </div>
-
-    <!-- Live Signature Counter -->
-    <div class="counter" id="liveCount">100+<br>have signed the petition</div>
 
     <!-- BY THE NUMBERS -->
-    <div class="numbers-section">
+    <div class="numbers-section block">
       <h2>BY THE NUMBERS – How We Replace $4.1 Billion Revenue-Neutral</h2>
       <table class="numbers-table">
-        <tr><th>Source</th><th>Change</th><th>Revenue Generated</th></tr>
-        <tr><td>State Sales Tax</td><td>6% → 7.25% (+1.25 pts)</td><td>+$2.25 billion</td></tr>
-        <tr><td>Low-Income Rebates</td><td>Full refund for households under $40k</td><td>– $340 million</td></tr>
-        <tr><td><strong>Net Sales Tax</strong></td><td></td><td><strong>+$1.91 billion</strong></td></tr>
-        <tr><td>Close Major Corporate Loopholes</td><td>Top 15 exemptions eliminated</td><td>+$1.10 billion</td></tr>
-        <tr><td>Redirect Surplus & Growth</td><td>60% of recurring surplus + growth</td><td>+$750 million</td></tr>
-        <tr><td>Luxury/Excise Buffer</td><td>2% on purchases over $5k</td><td>+$350 million</td></tr>
-        <tr><td colspan="3" style="background:#f5d742; font-weight:bold; text-align:center;">
-          TOTAL NEW REVENUE = <strong>+$4.11 billion</strong> (covers the $4.1B property tax hole with $10M cushion)
-        </td></tr>
+        <thead>
+          <tr><th>Source</th><th>Change</th><th>Revenue Generated</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Source">State Sales Tax</td><td data-label="Change">6% → 7.25% (+1.25 pts)</td><td data-label="Revenue">+$2.25 billion</td></tr>
+          <tr><td data-label="Source">Low-Income Rebates</td><td data-label="Change">Full refund for households under $40k</td><td data-label="Revenue">– $340 million</td></tr>
+          <tr><td data-label="Source"><strong>Net Sales Tax</strong></td><td data-label="Change"></td><td data-label="Revenue"><strong>+$1.91 billion</strong></td></tr>
+          <tr><td data-label="Source">Close Major Corporate Loopholes</td><td data-label="Change">Top 15 exemptions eliminated</td><td data-label="Revenue">+$1.10 billion</td></tr>
+          <tr><td data-label="Source">Redirect Surplus &amp; Growth</td><td data-label="Change">60% of recurring surplus + growth</td><td data-label="Revenue">+$750 million</td></tr>
+          <tr><td data-label="Source">Luxury/Excise Buffer</td><td data-label="Change">2% on purchases over $5k</td><td data-label="Revenue">+$350 million</td></tr>
+          <tr class="total"><td colspan="3">TOTAL NEW REVENUE = <strong>+$4.11 billion</strong> (covers the $4.1B property tax hole with $10M cushion)</td></tr>
+        </tbody>
       </table>
-      <p style="margin-top:20px; color:#f5d742; font-size:1.1em;">
-        <strong>This is fully funded, revenue-neutral, and protects schools, police, and fire.</strong>
-      </p>
+      <p><strong>This is fully funded, revenue-neutral, and protects schools, police, and fire.</strong></p>
     </div>
 
-    <!-- Share + Social + Donate -->
-    <div class="social-buttons">
-      <a href="https://x.com/intent/tweet?text=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC&url=https://nopropertytaxsc.com" target="_blank" class="share-btn">Share on X</a>
-      <a href="https://www.instagram.com/" target="_blank" class="share-btn">Share on Instagram</a>
-      <a href="https://x.com/nopropertytaxsc" target="_blank">Follow on X</a>
-      <a href="https://www.instagram.com/nopropertytaxsc/" target="_blank">Follow on Instagram</a>
-    </div>
-    <div class="donate-section">
-      <p style="font-size:1.8em; font-weight:bold; margin-bottom:20px;">Support the movement — donate below</p>
-      <a href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" class="donate-btn">DONATE NOW</a>
+    <!-- Share + Social -->
+    <div class="btn-row">
+      <a class="btn" href="https://x.com/intent/tweet?text=Join+the+movement+to+abolish+property+tax+in+South+Carolina!+Sign+the+petition+at+NoPropertyTaxSC.com+%23NoPropertyTaxSC&url=https://nopropertytaxsc.com" target="_blank" rel="noopener">Share on X</a>
+      <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Share on Instagram</a>
+      <a class="btn" href="https://x.com/nopropertytaxsc" target="_blank" rel="noopener">Follow on X</a>
+      <a class="btn" href="https://www.instagram.com/nopropertytaxsc/" target="_blank" rel="noopener">Follow on Instagram</a>
     </div>
 
-    <!-- CONTACT REPS SECTION – RIGHT BEFORE THE FORM -->
-    <div class="reps-section">
+    <!-- Donate -->
+    <div class="donate-section btn-row">
+      <p>Support the movement — donate below</p>
+      <a class="btn btn-donate" href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" rel="noopener">DONATE NOW</a>
+    </div>
+
+    <!-- CONTACT REPS -->
+    <div class="reps-section block">
       <h2>Contact Your State Representatives</h2>
       <p>Tell them: “I am not a slave to the state — vote to abolish Property Tax in 2026”</p>
       <div class="zip-lookup">
-        <input type="text" id="zipInput" placeholder="Enter ZIP Code">
-        <button onclick="findReps()" class="find-btn">Find My Reps</button>
+        <input type="text" id="zipInput" placeholder="Enter ZIP Code" inputmode="numeric" pattern="[0-9]*" maxlength="5" autocomplete="postal-code">
+        <button type="button" onclick="findReps()" class="btn">Find My Reps</button>
       </div>
       <div id="repsResult"></div>
       <div class="email-template">
@@ -146,32 +222,96 @@
         <p><strong>Subject:</strong> Abolish Property Taxes – Vote YES in 2026</p>
         <p>Dear [Rep Name],<br>I demand you vote to end property taxes forever. I signed at NoPropertyTaxSC.com.<br><strong>I am not a slave to the state. I deserve full ownership.</strong><br>Sincerely, [Your Name]</p>
       </div>
-      <a href="https://www.scstatehouse.gov/email.php?chamber=B" target="_blank" class="all-legislators-btn">CONTACT ALL LEGISLATORS</a>
+      <div class="btn-row">
+        <a class="btn" href="https://www.scstatehouse.gov/email.php?chamber=B" target="_blank" rel="noopener">CONTACT ALL LEGISLATORS</a>
+      </div>
     </div>
 
-    <!-- PETITION SIGNING FORM – NOW AT THE VERY END -->
-    <div class="form-box">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" frameborder="0">Loading petition…</iframe>
+    <!-- PETITION SIGNING FORM -->
+    <div class="form-box block" id="sign">
+      <h2>Sign the Petition</h2>
+      <iframe id="petitionForm" src="https://docs.google.com/forms/d/e/1FAIpQLSfDp-rdFfyqg_8IW1zT3KkCgcjhsNTONFnfsX8Dyv164HSK-w/viewform?embedded=true" title="Petition signing form" loading="lazy">Loading petition…</iframe>
     </div>
-
   </main>
+
   <footer>
     <p><strong>No Property Tax South Carolina</strong><br>
        A grassroots movement to abolish property tax in SC<br>
        Every signature is stored securely • Contact: nopropertytaxsc@gmail.com</p>
   </footer>
-  <a href="#" class="back-to-top">Back to Top</a>
+  <a href="#" class="back-to-top">↑ Top</a>
 
   <script>
+    /* ===================== LIVE SIGNATURE COUNTER =====================
+       Paste your Google Apps Script Web App URL below (see setup steps).
+       COUNT_OFFSET lets you add paper/offline signatures to the total.   */
+    const COUNT_URL    = 'https://script.google.com/macros/s/AKfycbzrDtW1kr35sYPSeA1jLut5o6QIvYuWzArOZD25pZImpi9vxM73JOkZdStVe42fdbC5/exec';
+    const COUNT_OFFSET = 0;
+    const POLL_MS      = 15000;   // check for new signatures every 15 seconds
+
+    const numEl   = document.getElementById('countNum');
+    const boxEl   = document.getElementById('liveCount');
+    let current   = null;
+
+    function animateTo(target) {
+      const start = current ?? Math.max(0, target - 50);
+      const t0 = performance.now(), dur = 900;
+      function step(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const val = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        numEl.textContent = val.toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      if (current !== null && target > current) {
+        boxEl.classList.remove('bump'); void boxEl.offsetWidth; boxEl.classList.add('bump');
+      }
+      current = target;
+    }
+
+    async function refreshCount() {
+      if (!COUNT_URL.startsWith('https://')) return;       // not configured yet → keeps "100+"
+      try {
+        const res  = await fetch(COUNT_URL + '?t=' + Date.now(), { cache:'no-store' });
+        const data = await res.json();
+        const total = Number(data.count) + COUNT_OFFSET;
+        if (Number.isFinite(total) && total !== current) animateTo(total);
+      } catch (e) { /* network hiccup – try again next poll */ }
+    }
+
+    refreshCount();
+    setInterval(() => { if (!document.hidden) refreshCount(); }, POLL_MS);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshCount(); });
+
+    // The Google Form iframe reloads after someone submits → refresh the count right away
+    let formLoads = 0;
+    document.getElementById('petitionForm').addEventListener('load', () => {
+      formLoads++;
+      if (formLoads > 1) { setTimeout(refreshCount, 2000); setTimeout(refreshCount, 6000); }
+    });
+
+    /* ===================== PETITION EXPAND ===================== */
+    const pet = document.getElementById('petition');
+    const tBtn = document.getElementById('toggleBtn');
+    tBtn.addEventListener('click', () => {
+      const open = pet.classList.toggle('open');
+      tBtn.setAttribute('aria-expanded', open);
+      tBtn.textContent = open ? 'Collapse ▴' : 'Read full petition ▾';
+      if (!open) pet.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+
+    /* ===================== REP LOOKUP ===================== */
     function findReps() {
       const zip = document.getElementById('zipInput').value.trim();
-      if (!zip || zip.length !== 5 || isNaN(zip)) {
-        document.getElementById('repsResult').innerHTML = '<p style="color:red;">Enter a valid 5-digit ZIP</p>';
+      const out = document.getElementById('repsResult');
+      if (!/^\d{5}$/.test(zip)) {
+        out.innerHTML = '<p style="color:#c00;font-weight:bold;">Enter a valid 5-digit ZIP</p>';
         return;
       }
       window.open(`https://www.scstatehouse.gov/legislatorssearch.php?zip=${zip}`, '_blank');
-      document.getElementById('repsResult').innerHTML = '<p>Opening official lookup…</p>';
+      out.innerHTML = '<p>Opening official lookup…</p>';
     }
+    document.getElementById('zipInput').addEventListener('keydown', e => { if (e.key === 'Enter') findReps(); });
   </script>
 </body>
 </html>
