@@ -64,6 +64,8 @@
     .btn:hover, .btn:focus-visible { background:#f5d742; color:#000; }
     .btn-donate { background:#d00000; color:#fff; }
     .donate-section p { font-size:1.3em; font-weight:bold; margin:0 0 4px; }
+    .btn-venmo { background:#008CFF; color:#fff; }
+    .venmo-handle { font-weight:bold; font-size:0.95em; flex-basis:100%; }
 
     /* Reps section */
     .reps-section { background:#fff; padding:20px 14px; }
@@ -206,6 +208,8 @@
     <div class="donate-section btn-row">
       <p>Support the movement — donate below</p>
       <a class="btn btn-donate" href="https://www.givesendgo.com/SupportNoPropertyTaxSC" target="_blank" rel="noopener">DONATE NOW</a>
+      <a class="btn btn-venmo" id="venmoBtn" href="https://venmo.com/u/Caleb-Anderson-101" target="_blank" rel="noopener">DONATE WITH VENMO</a>
+      <span class="venmo-handle">@Caleb-Anderson-101</span>
     </div>
 
     <!-- CONTACT REPS -->
@@ -289,6 +293,17 @@
       formLoads++;
       if (formLoads > 1) { setTimeout(refreshCount, 2000); setTimeout(refreshCount, 6000); }
     });
+
+    /* ===================== VENMO ===================== */
+    // On phones, open the Venmo app straight to a pre-filled payment; desktop uses the web profile link.
+    (function () {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        document.getElementById('venmoBtn').href =
+          'https://venmo.com/?txn=pay&recipients=Caleb-Anderson-101&note=' +
+          encodeURIComponent('No Property Tax SC donation');
+      }
+    })();
 
     /* ===================== PETITION EXPAND ===================== */
     const pet = document.getElementById('petition');
